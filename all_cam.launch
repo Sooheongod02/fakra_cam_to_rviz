@@ -1,0 +1,35 @@
+<launch>
+    <node pkg="my_camera_driver" type="camera_pub.py" name="cam_1" output="screen">
+        <param name="device_id" value="0"/>
+        <param name="camera_name" value="cam_0"/>
+    </node>
+
+    <node pkg="my_camera_driver" type="camera_pub.py" name="cam_2" output="screen">
+        <param name="device_id" value="1"/>
+        <param name="camera_name" value="cam_1"/>
+    </node>
+
+    <node pkg="my_camera_driver" type="camera_pub.py" name="cam_3" output="screen">
+        <param name="device_id" value="2"/>
+        <param name="camera_name" value="cam_2"/>
+    </node>
+
+    <node pkg="my_camera_driver" type="camera_pub.py" name="cam_4" output="screen">
+        <param name="device_id" value="3"/>
+        <param name="camera_name" value="cam_3"/>
+    </node>
+    
+    <node pkg="tf2_ros" type="static_transform_publisher" name="tf_cam_0"
+          args="1.0 0 1.0 -1.57 0 -1.57 base_link cam_0_link" />
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="tf_cam_1"
+          args="0.5 0.5 1.0 -1.57 0 -1.57 base_link cam_1_link" />
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="tf_cam_2"
+          args="-1.0 0 1.0 -1.57 0 -1.57 base_link cam_2_link" />
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="tf_cam_3"
+          args="0.5 -0.5 1.0 -1.57 0 -1.57 base_link cam_3_link" />
+
+</launch>
+
