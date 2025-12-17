@@ -1,0 +1,27 @@
+<launch>
+    <node pkg="yolo_camera" type="yolo_camera_node.py" name="yolo_front" output="screen">
+        <param name="input_topic" value="/front_camera/compressed" />
+        <param name="output_topic" value="/yolo/front/image" />
+        <param name="conf" value="0.5" />
+    </node>
+
+    <node pkg="yolo_camera" type="yolo_camera_node.py" name="yolo_left" output="screen">
+        <param name="input_topic" value="/left_camera/compressed" />
+        <param name="output_topic" value="/yolo/left/image" />
+        <param name="conf" value="0.5" />
+    </node>
+
+    <node pkg="yolo_camera" type="yolo_camera_node.py" name="yolo_right" output="screen">
+        <param name="input_topic" value="/right_camera/compressed" />
+        <param name="output_topic" value="/yolo/right/image" />
+        <param name="conf" value="0.5" />
+    </node>
+
+    <node pkg="yolo_camera" type="yolo_camera_node.py" name="yolo_rear" output="screen">
+        <param name="input_topic" value="/rear_camera/compressed" />
+        <param name="output_topic" value="/yolo/rear/image" />
+        <param name="conf" value="0.5" />
+    </node>
+    
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find yolo_camera)/rviz/yolo_config.rviz" />
+</launch>
